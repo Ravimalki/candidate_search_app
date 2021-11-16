@@ -22,15 +22,14 @@ import com.example.candidate_search_test_app.R;
  */
 
 abstract public class SwipeToDeleteCallBack extends ItemTouchHelper.Callback {
-    private Context context;
-    private Paint paint;
-    private ColorDrawable colorDrawable;
-    private int backgroundColor;
-    private Drawable drawable;
-    private int intrinsicWidth, intrinsicHeight;
+    private final Paint paint;
+    private final ColorDrawable colorDrawable;
+    private final int backgroundColor;
+    private final Drawable drawable;
+    private final int intrinsicWidth;
+    private final int intrinsicHeight;
 
     public SwipeToDeleteCallBack(Context context) {
-        this.context = context;
         colorDrawable = new ColorDrawable();
         backgroundColor = Color.parseColor("#f01111");
         paint = new Paint();

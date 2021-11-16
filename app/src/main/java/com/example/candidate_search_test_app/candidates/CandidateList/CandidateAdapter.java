@@ -20,7 +20,6 @@ import com.example.candidate_search_test_app.databinding.CandidateContentListVie
  */
 public class CandidateAdapter extends RecyclerView.Adapter<CandidateViewHolder> {
     private CandidateList candidates;
-    private Candidates list;
 
     public void setCandidates(CandidateList candidates) {
         this.candidates = candidates;
@@ -38,10 +37,10 @@ public class CandidateAdapter extends RecyclerView.Adapter<CandidateViewHolder> 
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull CandidateViewHolder holder, int position) {
-        list = candidates.getCandidates().get(position);
+        Candidates list = candidates.getCandidates().get(position);
         Glide.with(holder.binding.getRoot()).load(list.getPicture().getMedium()).into(holder.binding.imageView);
         holder.binding.fullName.setText(list.getName().toString());
-        holder.binding.age.setText(list.getDob().getAge());
+        holder.binding.age.setText(list.getDob().getAge()+" yrs");
         holder.binding.cardView.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putParcelable("candidate", candidates.getCandidates().get(position));

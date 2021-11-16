@@ -1,5 +1,6 @@
 package com.example.candidate_search_test_app.candidates.SelectedList;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -8,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.candidate_search_test_app.databinding.CandidateContentListViewBinding;
-import com.example.candidate_search_test_app.model.CandidateList;
-import com.example.candidate_search_test_app.model.Candidates;
 import com.example.candidate_search_test_app.model.SelectedCandidates;
 
 import java.util.List;
@@ -19,7 +18,6 @@ import java.util.List;
  */
 public class SelectedListAdapter extends RecyclerView.Adapter<SelectedListViewHolder> {
     private List<SelectedCandidates> list;
-    private SelectedCandidates candidates;
 
     public void setList(List<SelectedCandidates> list) {
         this.list = list;
@@ -33,12 +31,13 @@ public class SelectedListAdapter extends RecyclerView.Adapter<SelectedListViewHo
         return new SelectedListViewHolder(binding);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull SelectedListViewHolder holder, int position) {
-        candidates = list.get(position);
+        SelectedCandidates candidates = list.get(position);
         Glide.with(holder.binding.getRoot()).load(candidates.getImage()).into(holder.binding.imageView);
         holder.binding.fullName.setText(candidates.getName());
-        holder.binding.age.setText(candidates.getAge());
+        holder.binding.age.setText(candidates.getAge()+" yrs");
     }
 
     @Override

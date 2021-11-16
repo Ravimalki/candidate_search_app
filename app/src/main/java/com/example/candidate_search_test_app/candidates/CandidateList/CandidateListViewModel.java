@@ -1,14 +1,12 @@
 package com.example.candidate_search_test_app.candidates.CandidateList;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.candidate_search_test_app.model.CandidateList;
-import com.example.candidate_search_test_app.model.Candidates;
 import com.example.candidate_search_test_app.network.APIClient;
 import com.example.candidate_search_test_app.network.Services;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,8 +17,7 @@ import retrofit2.Response;
  */
 
 public class CandidateListViewModel extends ViewModel {
-    private MutableLiveData<CandidateList> liveData;
-    private List<Candidates> candidatesList;
+    private final MutableLiveData<CandidateList> liveData;
     private Services services;
 
     public CandidateListViewModel() {
@@ -41,12 +38,12 @@ public class CandidateListViewModel extends ViewModel {
         Call<CandidateList> call = services.getCandiates();
         call.enqueue(new Callback<CandidateList>() {
             @Override
-            public void onResponse(Call<CandidateList> call, Response<CandidateList> response) {
+            public void onResponse(@NonNull Call<CandidateList> call, @NonNull Response<CandidateList> response) {
                 liveData.setValue(response.body());
             }
 
             @Override
-            public void onFailure(Call<CandidateList> call, Throwable t) {
+            public void onFailure(@NonNull Call<CandidateList> call, @NonNull Throwable t) {
                 System.out.println(t.getMessage());
 
             }

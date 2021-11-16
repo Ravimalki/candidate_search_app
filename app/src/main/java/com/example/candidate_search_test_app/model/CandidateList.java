@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class CandidateList {
     @SerializedName("results")
-    private List<Candidates> candidates;
+    private final List<Candidates> candidates;
 
     public CandidateList(List<Candidates> candidates) {
         this.candidates = candidates;

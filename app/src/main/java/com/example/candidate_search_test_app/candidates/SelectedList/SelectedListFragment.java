@@ -2,9 +2,11 @@ package com.example.candidate_search_test_app.candidates.SelectedList;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,10 +15,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.candidate_search_test_app.databinding.SelectedListFragmentBinding;
 import com.example.candidate_search_test_app.model.SelectedCandidates;
@@ -77,32 +75,25 @@ public class SelectedListFragment extends Fragment {
                 new AlertDialog.Builder(getContext())
                         .setTitle("Deselect Candidate")
                         .setMessage("Are you sure you want to deselect?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                adapter.removeItem(position);
-                                helper.deleteData(item.getId());
+                        .setPositiveButton("Yes", (dialog, which) -> {
+                            adapter.removeItem(position);
+                            helper.deleteData(item.getId());
 
-                                dialog.dismiss();
+                            dialog.dismiss();
 
-                                Snackbar snackbar = Snackbar.make(binding.getRoot(), "Item was removed from the list",
-                                        Snackbar.LENGTH_LONG);
-                                snackbar.setAction("UNDO", v -> {
-                                    helper.insertData(item.getImage(), item.getName(), item.getAge());
-                                    adapter.restoreItem(item, position);
-                                    recyclerView.scrollToPosition(position);
-                                });
-                                snackbar.setActionTextColor(Color.YELLOW);
-                                snackbar.show();
-                            }
+                            Snackbar snackbar = Snackbar.make(binding.getRoot(), "Item was removed from the list",
+                                    Snackbar.LENGTH_LONG);
+                            snackbar.setAction("UNDO", v -> {
+                                helper.insertData(item.getImage(), item.getName(), item.getAge());
+                                adapter.restoreItem(item, position);
+                                recyclerView.scrollToPosition(position);
+                            });
+                            snackbar.setActionTextColor(Color.YELLOW);
+                            snackbar.show();
                         })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @SuppressLint("NotifyDataSetChanged")
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                adapter.notifyDataSetChanged();
-                                dialog.dismiss();
-                            }
+                        .setNegativeButton("No", (dialog, which) -> {
+                            adapter.notifyDataSetChanged();
+                            dialog.dismiss();
                         }).show();
             }
         };

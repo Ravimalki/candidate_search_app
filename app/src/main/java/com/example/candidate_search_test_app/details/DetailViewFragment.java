@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -29,7 +30,7 @@ public class DetailViewFragment extends Fragment {
     private Candidates candidates;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(DetailViewModel.class);
         binding = DetailViewBinding.inflate(inflater, container, false);
 
@@ -39,6 +40,7 @@ public class DetailViewFragment extends Fragment {
 
     public void initComponents() {
         textView = getActivity().findViewById(R.id.selectbtn);
+        assert getArguments() != null;
         candidates = getArguments().getParcelable("candidate");
         textView.setVisibility(View.VISIBLE);
 

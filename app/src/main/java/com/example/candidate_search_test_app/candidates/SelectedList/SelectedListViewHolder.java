@@ -1,7 +1,5 @@
 package com.example.candidate_search_test_app.candidates.SelectedList;
 
-import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 

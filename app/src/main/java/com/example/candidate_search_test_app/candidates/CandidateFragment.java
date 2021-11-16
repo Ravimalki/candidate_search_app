@@ -28,7 +28,7 @@ public class CandidateFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = CandidateViewBinding.inflate(inflater, container, false);
         initComponents();
         return binding.getRoot();
@@ -80,8 +80,6 @@ public class CandidateFragment extends Fragment {
     }
 
     static class CandidateTabAdapter extends FragmentStateAdapter {
-        int totalTabs;
-
         public CandidateTabAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
             super(fragmentManager, lifecycle);
         }
