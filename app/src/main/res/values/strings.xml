@@ -2,11 +2,17 @@
     <string name="app_name">candidate_search_test_app</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="candidate">Candidates</string>
+    <string name="candidate_details">Candidates Details</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="tab_1">Candidates</string>
+    <string name="tab_2">Selected</string>
+
+    <string name="address">Address: </string>
+    <string name="contact">Contact Number: </string>
+    <string name="dob">Date of Birth: </string>
+    <string name="email">Email Address: </string>
+
+    <string name="select">Select</string>
+    <string name="selected">Selected</string>
 </resources>
