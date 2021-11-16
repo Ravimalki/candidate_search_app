@@ -37,7 +37,8 @@ public class SelectedListAdapter extends RecyclerView.Adapter<SelectedListViewHo
         SelectedCandidates candidates = list.get(position);
         Glide.with(holder.binding.getRoot()).load(candidates.getImage()).into(holder.binding.imageView);
         holder.binding.fullName.setText(candidates.getName());
-        holder.binding.age.setText(candidates.getAge()+" yrs");
+        holder.binding.age.setText(candidates.getAge() + " yrs");
+        removeItem(1);
     }
 
     @Override
@@ -45,16 +46,32 @@ public class SelectedListAdapter extends RecyclerView.Adapter<SelectedListViewHo
         return list.size();
     }
 
-    public void removeItem (int position){
+    /**
+     * remove item from adapter data set
+     *
+     * @param position - position of the item to remove from adapter data set
+     */
+    public void removeItem(int position) {
         list.remove(position);
         notifyItemRemoved(position);
     }
 
-    public void restoreItem(SelectedCandidates item,int position){
-        list.add(position,item);
+    /**
+     * restore item that is removed from adapter data set
+     *
+     * @param item     - items that is to be restored
+     * @param position - position of the item to restore
+     */
+    public void restoreItem(SelectedCandidates item, int position) {
+        list.add(position, item);
         notifyItemInserted(position);
     }
 
+    /**
+     * get item list
+     *
+     * @return - List of items
+     */
     public List<SelectedCandidates> getList() {
         return list;
     }

@@ -34,10 +34,17 @@ public class CandidateFragment extends Fragment {
         return binding.getRoot();
     }
 
+    /**
+     * initiate components
+     */
     private void initComponents() {
         setupViewPager(binding.editView);
     }
 
+    /**
+     * setup viewpager to tablayout
+     * @param viewPager - viewpager component
+     */
     private void setupViewPager(ViewPager2 viewPager) {
         binding.editView.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override

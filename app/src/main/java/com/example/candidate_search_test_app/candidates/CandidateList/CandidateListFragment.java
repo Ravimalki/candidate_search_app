@@ -39,15 +39,24 @@ public class CandidateListFragment extends Fragment {
         return view;
     }
 
+    /**
+     * initiate components
+     */
     private void initComponents() {
         recyclerView = binding.recyclerView;
         init();
     }
 
+    /**
+     * initiate necessary methods
+     */
     private void init() {
         loadCandidates();
     }
 
+    /**
+     * load candidates details from viewmodel
+     */
     @SuppressLint("NotifyDataSetChanged")
     private void loadCandidates() {
         mViewModel.getLiveData().observe(getViewLifecycleOwner(), candidates -> {
@@ -58,6 +67,9 @@ public class CandidateListFragment extends Fragment {
         });
     }
 
+    /**
+     * set loaded candidate details to adapter
+     */
     private void setDataToAdapter() {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

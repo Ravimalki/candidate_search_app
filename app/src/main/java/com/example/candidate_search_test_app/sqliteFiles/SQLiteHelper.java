@@ -42,6 +42,13 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
     }
 
+    /**
+     * insert data into database
+     * @param img - image
+     * @param name - name
+     * @param age - age
+     * @return boolean
+     */
     public boolean insertData(String img, String name, String age) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -57,6 +64,10 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * fetch all data from database
+     * @return - list of candidate objects
+     */
     public List<SelectedCandidates> fetchAllData() {
         SQLiteDatabase database = this.getWritableDatabase();
         Cursor cursor = database.rawQuery("select * from Candidates", null);
@@ -76,6 +87,14 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return candidatesList;
     }
 
+    /**
+     * update a existing data
+     * @param id - id of the data
+     * @param img - image
+     * @param name - name
+     * @param age - age
+     * @return boolean
+     */
     public boolean updateData(int id, String img, String name, String age) {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -87,6 +106,11 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    /**
+     * delete a item from the database
+     * @param id - id of the item that is to be deleted
+     * @return - int
+     */
     public Integer deleteData(int id) {
         SQLiteDatabase database = this.getWritableDatabase();
         return database.delete(TABLE_NAME, "ID=?", new String[]{String.valueOf(id)});

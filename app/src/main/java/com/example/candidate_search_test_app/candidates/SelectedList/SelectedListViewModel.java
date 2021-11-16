@@ -15,6 +15,12 @@ import java.util.List;
 
 public class SelectedListViewModel extends ViewModel {
 
+    /**
+     * load selected candidates from SQLite database
+     *
+     * @param context - context
+     * @return - List of selected candidates
+     */
     public List<SelectedCandidates> loadSelectedCandidates(Context context) {
         SQLiteHelper helper = new SQLiteHelper(context);
 

@@ -38,6 +38,9 @@ public class DetailViewFragment extends Fragment {
         return binding.getRoot();
     }
 
+    /**
+     * initiate component
+     */
     public void initComponents() {
         textView = getActivity().findViewById(R.id.selectbtn);
         assert getArguments() != null;
@@ -52,6 +55,9 @@ public class DetailViewFragment extends Fragment {
         loadCandidateDetails();
     }
 
+    /**
+     * change the properties of select btn
+     */
     private void setSelectBtn() {
         SQLiteHelper helper = new SQLiteHelper(getContext());
         List<SelectedCandidates> selectedCandidates = helper.fetchAllData();
@@ -69,6 +75,9 @@ public class DetailViewFragment extends Fragment {
         }
     }
 
+    /**
+     * load relavant candidate details
+     */
     private void loadCandidateDetails() {
         assert getArguments() != null;
         viewModel.loadCandidateDetails(candidates, binding);

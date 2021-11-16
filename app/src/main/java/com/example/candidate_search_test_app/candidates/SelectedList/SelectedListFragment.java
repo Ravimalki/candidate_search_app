@@ -43,12 +43,17 @@ public class SelectedListFragment extends Fragment {
         return view;
     }
 
+    /**
+     * initiate components
+     */
     public void initComponents() {
         recyclerView = binding.recyclerview;
         loadSelectedCandidates();
     }
 
-
+    /**
+     * load selected candidates
+     */
     @SuppressLint("NotifyDataSetChanged")
     public void loadSelectedCandidates() {
         adapter = new SelectedListAdapter();
@@ -57,6 +62,9 @@ public class SelectedListFragment extends Fragment {
         setDataToAdapter();
     }
 
+    /**
+     * set loaded data to adapter
+     */
     public void setDataToAdapter() {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -64,6 +72,9 @@ public class SelectedListFragment extends Fragment {
         enableSwipeToDelete();
     }
 
+    /**
+     * enable swipe feature to delete a item from recyclerview
+     */
     private void enableSwipeToDelete() {
         SwipeToDeleteCallBack swipeToDeleteCallBack = new SwipeToDeleteCallBack(getContext()) {
             @Override

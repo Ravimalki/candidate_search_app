@@ -29,11 +29,17 @@ public class CandidateListViewModel extends ViewModel {
         return liveData;
     }
 
+    /**
+     * initiate the service and load necessary methods
+     */
     private void init() {
         services = APIClient.getClient().create(Services.class);
         loadCandidates();
     }
 
+    /**
+     * load candidates details from API call
+     */
     private void loadCandidates() {
         Call<CandidateList> call = services.getCandiates();
         call.enqueue(new Callback<CandidateList>() {

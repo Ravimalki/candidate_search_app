@@ -15,10 +15,8 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class APIClient {
     private static Retrofit retrofit = null;
 
-
     public static Retrofit getClient() {
         if (retrofit == null) {
-
            OkHttpClient client = new OkHttpClient();
 
             Gson gson = new GsonBuilder()

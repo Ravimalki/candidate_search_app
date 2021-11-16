@@ -79,6 +79,15 @@ abstract public class SwipeToDeleteCallBack extends ItemTouchHelper.Callback {
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
     }
 
+    /**
+     * clear canvas when swipe canceled
+     *
+     * @param canvas - canvas
+     * @param left   - float value to left
+     * @param top    - float value to top
+     * @param right  - float value to right
+     * @param bottom -float value to bottom
+     */
     private void clearCanvas(Canvas canvas, Float left, Float top, Float right, Float bottom) {
         canvas.drawRect(left, top, right, bottom, paint);
     }

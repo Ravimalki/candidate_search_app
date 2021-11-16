@@ -21,6 +21,11 @@ import java.util.Date;
 public class DetailViewModel extends ViewModel {
     private Candidates candidate;
 
+    /**
+     * load candidate details from argument
+     * @param candidates - candidate object
+     * @param binding - binding of the view
+     */
     public void loadCandidateDetails(Candidates candidates, DetailViewBinding binding) {
         try {
             this.candidate = candidates;
@@ -41,6 +46,10 @@ public class DetailViewModel extends ViewModel {
         }
     }
 
+    /**
+     * select candidate as selected
+     * @param context - context
+     */
     public void selectCandidate(Context context) {
         SQLiteHelper helper = new SQLiteHelper(context);
         helper.insertData(
