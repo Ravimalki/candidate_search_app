@@ -11,8 +11,8 @@ This is a personal project that is build to search,view and select candidates wi
 
 ## Libraries and Tools
 
-- Retrofit
-- Gson
-- Glide
+- Retrofit - REST Client for Java and Android
+- Gson - Java-based library for parsing and creating JSON objects
+- Glide - Image Loader Library for Android
 
 
