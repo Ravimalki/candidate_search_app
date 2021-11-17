@@ -38,7 +38,6 @@ public class SelectedListAdapter extends RecyclerView.Adapter<SelectedListViewHo
         Glide.with(holder.binding.getRoot()).load(candidates.getImage()).into(holder.binding.imageView);
         holder.binding.fullName.setText(candidates.getName());
         holder.binding.age.setText(candidates.getAge() + " yrs");
-        removeItem(1);
     }
 
     @Override

@@ -15,4 +15,6 @@
 
     <string name="select">Select</string>
     <string name="selected">Selected</string>
+
+    <string name="search">Search here</string>
 </resources>

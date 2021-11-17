@@ -2,6 +2,7 @@ package com.example.candidate_search_test_app.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,4 +19,5 @@ public class CandidateList {
     public List<Candidates> getCandidates() {
         return candidates;
     }
+
 }
