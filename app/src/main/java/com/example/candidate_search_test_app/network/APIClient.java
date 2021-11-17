@@ -7,7 +7,6 @@ package com.example.candidate_search_test_app.network;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
@@ -17,7 +16,6 @@ public class APIClient {
 
     public static Retrofit getClient() {
         if (retrofit == null) {
-           OkHttpClient client = new OkHttpClient();
 
             Gson gson = new GsonBuilder()
                     .setLenient()
@@ -26,7 +24,6 @@ public class APIClient {
             retrofit = new Retrofit
                     .Builder()
                     .baseUrl(BaseApiService.BASE_URL)
-                    .client(client)
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .addConverterFactory(ScalarsConverterFactory.create())
                     .build();
