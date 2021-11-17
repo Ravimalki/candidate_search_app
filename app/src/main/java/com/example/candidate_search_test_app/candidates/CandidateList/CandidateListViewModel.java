@@ -44,7 +44,8 @@ public class CandidateListViewModel extends ViewModel {
         Call<CandidateList> call = services.getCandiates();
         call.enqueue(new Callback<CandidateList>() {
             @Override
-            public void onResponse(@NonNull Call<CandidateList> call, @NonNull Response<CandidateList> response) {
+            public void onResponse(@NonNull Call<CandidateList> call,
+                                   @NonNull Response<CandidateList> response) {
                 liveData.setValue(response.body());
             }
 

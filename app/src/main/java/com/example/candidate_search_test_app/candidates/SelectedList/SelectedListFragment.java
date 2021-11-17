@@ -77,12 +77,14 @@ public class SelectedListFragment extends Fragment {
      */
     private void enableSwipeToDelete() {
         SwipeToDeleteCallBack swipeToDeleteCallBack = new SwipeToDeleteCallBack(getContext()) {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 final int position = viewHolder.getAdapterPosition();
                 final SelectedCandidates item = adapter.getList().get(position);
                 SQLiteHelper helper = new SQLiteHelper(getContext());
 
+                /* Show confirm alert dialog */
                 new AlertDialog.Builder(getContext())
                         .setTitle("Deselect Candidate")
                         .setMessage("Are you sure you want to deselect?")
@@ -92,7 +94,9 @@ public class SelectedListFragment extends Fragment {
 
                             dialog.dismiss();
 
-                            Snackbar snackbar = Snackbar.make(binding.getRoot(), "Item was removed from the list",
+                            /* show success alert with undo option */
+                            Snackbar snackbar = Snackbar.make(binding.getRoot(),
+                                    "Item was removed from the list",
                                     Snackbar.LENGTH_LONG);
                             snackbar.setAction("UNDO", v -> {
                                 helper.insertData(item.getImage(), item.getName(), item.getAge());
@@ -108,6 +112,7 @@ public class SelectedListFragment extends Fragment {
                         }).show();
             }
         };
+        /* Attach touch helper to recycler view */
         ItemTouchHelper helper = new ItemTouchHelper(swipeToDeleteCallBack);
         helper.attachToRecyclerView(recyclerView);
     }

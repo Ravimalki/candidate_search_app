@@ -35,7 +35,11 @@ public class SelectedListAdapter extends RecyclerView.Adapter<SelectedListViewHo
     @Override
     public void onBindViewHolder(@NonNull SelectedListViewHolder holder, int position) {
         SelectedCandidates candidates = list.get(position);
-        Glide.with(holder.binding.getRoot()).load(candidates.getImage()).into(holder.binding.imageView);
+
+        /* set image url to glide */
+        Glide.with(holder.binding.getRoot()).load(candidates.getImage())
+                .into(holder.binding.imageView);
+
         holder.binding.fullName.setText(candidates.getName());
         holder.binding.age.setText(candidates.getAge() + " yrs");
     }

@@ -30,7 +30,8 @@ public class DetailViewFragment extends Fragment {
     private Candidates candidates;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(DetailViewModel.class);
         binding = DetailViewBinding.inflate(inflater, container, false);
 
@@ -63,10 +64,7 @@ public class DetailViewFragment extends Fragment {
         List<SelectedCandidates> selectedCandidates = helper.fetchAllData();
 
         for (int i = 0; i < selectedCandidates.size(); i++) {
-            System.out.println("*" + selectedCandidates.get(i).getName() + "*" + " " + "*" + candidates.getName().toString() + "*");
-            System.out.println("*" + selectedCandidates.get(i).getAge() + "*" + " " + "*" + candidates.getDob().getAge() + "*");
-
-            if (selectedCandidates.get(i).getName().equals(candidates.getName().toString())
+           if (selectedCandidates.get(i).getName().equals(candidates.getName().toString())
                     && selectedCandidates.get(i).getAge().equals(candidates.getDob().getAge())) {
                 textView.setText(R.string.selected);
             } else {
@@ -76,7 +74,7 @@ public class DetailViewFragment extends Fragment {
     }
 
     /**
-     * load relavant candidate details
+     * load relevant candidate details
      */
     private void loadCandidateDetails() {
         assert getArguments() != null;

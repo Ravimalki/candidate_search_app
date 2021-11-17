@@ -38,9 +38,15 @@ public class CandidateAdapter extends RecyclerView.Adapter<CandidateViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull CandidateViewHolder holder, int position) {
         Candidates list = candidates.getCandidates().get(position);
-        Glide.with(holder.binding.getRoot()).load(list.getPicture().getMedium()).into(holder.binding.imageView);
+
+        /* set image url to glide */
+        Glide.with(holder.binding.getRoot()).load(list.getPicture().getMedium())
+                .into(holder.binding.imageView);
+
         holder.binding.fullName.setText(list.getName().toString());
         holder.binding.age.setText(list.getDob().getAge()+" yrs");
+
+        /* Navigate to Detail view screen */
         holder.binding.cardView.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putParcelable("candidate", candidates.getCandidates().get(position));

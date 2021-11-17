@@ -23,16 +23,21 @@ public class DetailViewModel extends ViewModel {
 
     /**
      * load candidate details from argument
+     *
      * @param candidates - candidate object
-     * @param binding - binding of the view
+     * @param binding    - binding of the view
      */
+    @SuppressLint("SimpleDateFormat")
     public void loadCandidateDetails(Candidates candidates, DetailViewBinding binding) {
         try {
             this.candidate = candidates;
-            @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             Date date = format.parse(candidate.getDob().getDob());
 
-            Glide.with(binding.getRoot()).load(candidate.getPicture().getLarge()).into(binding.imageView2);
+            /* set image url to glide */
+            Glide.with(binding.getRoot()).load(candidate.getPicture().getLarge())
+                    .into(binding.imageView2);
+
             binding.name.setText(candidate.getName().toString());
             binding.address.setText(candidate.getAddress().toString());
 
@@ -48,6 +53,7 @@ public class DetailViewModel extends ViewModel {
 
     /**
      * select candidate as selected
+     *
      * @param context - context
      */
     public void selectCandidate(Context context) {
