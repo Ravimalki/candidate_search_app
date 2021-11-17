@@ -1,12 +1,12 @@
 # Candidate Search App
 
-Search,view and Select Candidates via the API - https://randomuser.me/api/?results
+Search,view and Select Candidates via the API - [https://randomuser.me/api/?results](https://randomuser.me/api/?results)
 
 This is a personal project that is build to search,view and select candidates with the use Native Android and Retrofit
 
-![image](candidate_view.png) ![image](detail_view.png)
+<img src="candidate_view.png" width="400" height="800">   <img src="detail_view.png" width="400" height="800">
 
-![image](selected_view.png) ![image](deselect_view.png)
+<img src="selected_view.png" width="400" height="800">   <img src="deselect_view.png" width="400" height="800">
 
 
 ## Libraries and Tools
